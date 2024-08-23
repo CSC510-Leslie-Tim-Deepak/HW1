@@ -5,7 +5,7 @@
 ![Python](https://icongr.am/devicon/python-original.svg?size=50&color=currentColor)
 ![License](https://img.shields.io/github/license/CSC510-Leslie-Tim-Deepak/HW1.svg)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Python application](https://github.com/YourUsername/YourRepo/actions/workflows/python-app.yml/badge.svg)
+![Python application](https://github.com/CSC510-Leslie-Tim-Deepak/HW1/actions/workflows/python-app.yml/badge.svg)
 
 ## Screenshot
 ![Image](SE_HW1_Console.png)
