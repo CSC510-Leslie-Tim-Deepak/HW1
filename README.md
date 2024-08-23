@@ -10,8 +10,9 @@
 
 
 
-## Screenshot
-![Image](SE_HW1_Console.png)
+## Screenshots
+![Console](SE_HW1_Console.png)
+![Unittest](SE_HW1_Unittest.png)
 
 ### Homework Group
 - Leslie - tliu33
