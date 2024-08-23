@@ -1,19 +1,23 @@
-# Python program to find the factorial of a number provided by the user.
+def Fibonacci(n):
 
-# change the value for a different result
-num = 7
+	# Check if input is 0 then it will
+	# print incorrect input
+	if n < 0:
+		print("Incorrect input")
 
-# To take input from the user
-#num = int(input("Enter a number: "))
+	# Check if n is 0
+	# then it will return 0
+	elif n == 0:
+		return 0
 
-factorial = 1
+	# Check if n is 1,2
+	# it will return 1
+	elif n == 1 or n == 2:
+		return 1
 
-# check if the number is negative, positive or zero
-if num < 0:
-   print("Sorry, factorial does not exist for negative numbers")
-elif num == 0:
-   print("The factorial of 0 is 1")
-else:
-   for i in range(1,num + 1):
-       factorial = factorial*
-   print("The factorial of",num,"is",factorial)
+	else:
+		return Fibonacci(n-1) + Fibonacci(n-2)
+
+
+# Driver Program
+print(Fibonacci(15))
