@@ -1,3 +1,3 @@
 # HW1
 
-## Testing 1 2 3
+## Homework 1 for Software Engineering - CSC 510 Fall 24
