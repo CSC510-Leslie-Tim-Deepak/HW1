@@ -10,4 +10,5 @@
 ## Screenshot
 ![Image](SE_HW1_Console.png)
 
+### Homework Group
 Leslie-Tim-Deepak
