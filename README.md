@@ -14,6 +14,6 @@
 ![Image](SE_HW1_Console.png)
 
 ### Homework Group
-Leslie - tliu33
-Yi Ting Hou - yhou9
-Deepak - dpendya
+- Leslie - tliu33
+- Yi Ting Hou - yhou9
+- Deepak - dpendya
