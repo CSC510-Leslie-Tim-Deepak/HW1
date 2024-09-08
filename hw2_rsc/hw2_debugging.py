@@ -3,6 +3,7 @@ This module provides functionality for mergesort
 """
 import rand
 
+
 def merge_sort(input_arr):
     """
     This function provide the process of merge sort
@@ -10,9 +11,11 @@ def merge_sort(input_arr):
     if len(input_arr) == 1:
         return input_arr
 
-    half = len(input_arr)//2
+    half = len(input_arr) // 2
 
-    return recombine(merge_sort(input_arr[:half]), merge_sort(input_arr[half:]))
+    return recombine(merge_sort(
+        input_arr[:half]), merge_sort(input_arr[half:]))
+
 
 def recombine(left_arr, right_arr):
     """
@@ -36,6 +39,7 @@ def recombine(left_arr, right_arr):
         merge_arr[left_index + right_index] = left_arr[i]
 
     return merge_arr
+
 
 arr = rand.random_array([None] * 20)
 arr_out = merge_sort(arr)
