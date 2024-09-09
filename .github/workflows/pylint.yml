@@ -22,23 +22,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint
+          pip install pylint jq
 
       - name: Run Pylint
         id: pylint
         run: |
-          pylint_score=$(pylint hw2_src/*.py --exit-zero --score=y --output-format=json | jq -r '.[0].score')
-          echo "Pylint score: $pylint_score"
-          echo "badge-score=$pylint_score" >> $GITHUB_ENV
+          pylint_score=$(pylint hw2_src/*.py --exit-zero --output-format=json | jq -r '.[0].score')
+          echo "pylint_score=$pylint_score" >> $GITHUB_ENV
 
       - name: Generate Badge
-        uses: schneegans/dynamic-badges-action@v1
-        with:
-          label: 'Pylint Score'
-          value: ${{ env.badge-score }}
-          status: ${{ env.badge-score }}
-          color: ${{ steps.pylint.outputs.score >= 8 && 'brightgreen' || steps.pylint.outputs.score >= 6 && 'yellow' || 'red' }}
-          filepath: './badges/pylint-score.svg'
+        run: |
+          score=$(echo ${{ env.pylint_score }} | awk '{printf("%.1f\n", $1)}')
+          color=$(if (( $(echo "$score >= 8" | bc -l) )); then echo "brightgreen"; elif (( $(echo "$score >= 6" | bc -l) )); then echo "yellow"; else echo "red"; fi)
+          badge_url="https://img.shields.io/badge/Pylint-$score-$color.svg"
+          curl -o ./badges/pylint-score.svg $badge_url
 
       - name: Commit Badge
         run: |
