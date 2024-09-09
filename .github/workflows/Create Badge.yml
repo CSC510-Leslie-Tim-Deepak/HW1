@@ -23,11 +23,3 @@ jobs:
           label: Hello
           message: World
           color: orange
-
-      - name: Commit Badge
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
-          git add test.json  # Update to your actual badge file name
-          git commit -m "Update badge" || echo "No changes to commit"
-          git push
