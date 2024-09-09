@@ -32,7 +32,7 @@ jobs:
           echo "badge-score=$pylint_score" >> $GITHUB_ENV
 
       - name: Generate Badge
-        uses: schneegans/dynamic-badges-action@v1.x
+        uses: schneegans/dynamic-badges-action@v1
         with:
           label: 'Pylint Score'
           value: ${{ env.badge-score }}
