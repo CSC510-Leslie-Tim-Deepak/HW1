@@ -1,4 +1,4 @@
-name: Format Check
+name: autopep8_check
 
 on: [push, pull_request]
 
