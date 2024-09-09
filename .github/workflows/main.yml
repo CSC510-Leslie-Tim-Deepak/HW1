@@ -1,0 +1,23 @@
+name: Format Check
+
+on: [push, pull_request]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install autopep8
+
+    - name: Check code formatting
+      run: |
+        autopep8 --diff --ignore=E501 hw2_rsc/*.py > post_traces/autopep8_trace.txt
