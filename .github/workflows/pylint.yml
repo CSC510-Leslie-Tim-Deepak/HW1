@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint ./hw2_src/*.py --output-format=json > pylint-report.json || { echo 'Pylint failed'; exit 1; }
+          pylint ./hw2_rsc/*.py --output-format=json > pylint-report.json || { echo 'Pylint failed'; exit 1; }
           
         continue-on-error: true
 
