@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -24,10 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pylint jq
-
-      - name: Run Pylint
-        run: |
-          pylint ./hw2_rsc/*.py --output-format=json > pylint-report.json || { echo 'Pylint failed'; exit 1; }
           
-        continue-on-error: true
-
+      - name: Run Pylint & Update Dynamic Badge
+        uses: Silleellie/pylint-github-action@v2
+        with:
+          lint-path: |
+            ./hw2_rsc/*.py
+          python-version: 3.11
