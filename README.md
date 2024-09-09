@@ -10,7 +10,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/CSC510-Leslie-Tim-Deepak/HW1/badge.svg?branch=main)](https://coveralls.io/github/CSC510-Leslie-Tim-Deepak/HW1?branch=main)
 
 ## Homework 2 Badgets
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+![Pylint Score](./badges/pylint-score.svg)
 ![Format Check](https://github.com/Captain-Tim/HW1_fork/actions/workflows/autopep8_check.yml/badge.svg)
 
 
