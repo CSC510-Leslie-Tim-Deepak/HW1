@@ -3,7 +3,7 @@ name: autopep8_check
 on: [push, pull_request]
 
 jobs:
-  format:
+  autopep8:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
