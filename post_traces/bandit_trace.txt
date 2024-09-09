@@ -1,42 +1,22 @@
-Run started:2024-09-08 23:54:59.831771
+Run started:2024-09-09 00:44:57.014626
 
 Test results:
->> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
-   Severity: Low   Confidence: High
-   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
-   More Info: https://bandit.readthedocs.io/en/1.7.9/blacklists/blacklist_imports.html#b404-import-subprocess
-   Location: hw2_rsc/rand.py:4:0
-3	"""
-4	import subprocess
-5	
-
---------------------------------------------------
->> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
-   Severity: Low   Confidence: High
-   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
-   More Info: https://bandit.readthedocs.io/en/1.7.9/plugins/b603_subprocess_without_shell_equals_true.html
-   Location: hw2_rsc/rand.py:17:23
-16	    for i, _ in enumerate(arr):
-17	        shuffled_num = subprocess.run(
-18	            ["/usr/bin/shuf", "-i1-20", "-n1"], capture_output=True, check=True)
-19	        arr[i] = int(shuffled_num.stdout)
-
---------------------------------------------------
+	No issues identified.
 
 Code scanned:
-	Total lines of code: 53
+	Total lines of code: 35
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
 Run metrics:
 	Total issues (by severity):
 		Undefined: 0
-		Low: 2
+		Low: 0
 		Medium: 0
 		High: 0
 	Total issues (by confidence):
 		Undefined: 0
 		Low: 0
 		Medium: 0
-		High: 2
+		High: 0
 Files skipped (0):
