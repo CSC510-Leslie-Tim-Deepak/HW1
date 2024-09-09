@@ -12,7 +12,6 @@ def random_array(arr):
     Returns:
         list: The input list with random integers.
     """
-    shuffled_num = None
     for i, _ in enumerate(arr):
         arr[i] = secrets.randbelow(20) + 1
     return arr
