@@ -31,18 +31,3 @@ jobs:
           
         continue-on-error: true
 
-      - name: Generate Pylint badge
-        id: pylint_badge
-        run: |
-          # Extract the score from the Pylint report
-          pylint_score=$(jq '.[0].score' pylint-report.json)
-          
-          # Format the score as a percentage
-          score_percentage=$(echo "scale=2; $pylint_score * 100" | bc)
-          
-          # Generate the badge URL with the score
-          badge_url="https://img.shields.io/badge/pylint-${score_percentage}%25-brightgreen"
-          
-          # Output the badge URL as an environment variable
-          echo "badge_url=${badge_url}" >> $GITHUB_ENV
-
