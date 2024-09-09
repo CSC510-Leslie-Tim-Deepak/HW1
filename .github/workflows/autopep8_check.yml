@@ -22,7 +22,7 @@ jobs:
       run: |
         autopep8 --diff --ignore=E501 hw2_rsc/*.py > post_traces/autopep8_trace.txt
     - name: Upload report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: report
         path: post_traces/autopep8_trace.txt
