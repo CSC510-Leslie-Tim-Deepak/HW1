@@ -13,6 +13,7 @@
 ![Pylint Score](./badges/pylint-score.svg)
 ![Format Check](https://github.com/Captain-Tim/HW1_fork/actions/workflows/autopep8_check.yml/badge.svg)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/e08fb0f4d4d2ebffe6c63b3be6f0b21d/raw/test.json)
+![Pylint Badge](https://img.shields.io/badge/pylint-${score_percentage}%25-brightgreen)
 
 ## Screenshots
 ![Console](SE_HW1_Console.png)
