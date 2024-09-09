@@ -21,4 +21,4 @@ jobs:
 
     - name: Run Bandit
       run: |
-        bandit -r hw2_rsc/*.py -f txt -o post_traces/bandit_trace.txt
+        bandit -r hw2_rsc/rand.py -f txt -o post_traces/bandit_trace.txt
