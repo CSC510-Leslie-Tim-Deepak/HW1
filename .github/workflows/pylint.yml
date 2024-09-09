@@ -38,7 +38,6 @@ jobs:
       - name: Create Badges Directory
         run: |
           mkdir -p ./badges
-          rm -f ./badges/pylint-score.svg
 
       - name: Generate Badge
         run: |
