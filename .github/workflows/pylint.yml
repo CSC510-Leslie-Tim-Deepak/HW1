@@ -1,4 +1,4 @@
-name: Pylint Badge
+name: Lint Python Code
 
 on:
   push:
@@ -7,10 +7,7 @@ on:
   pull_request:
     branches:
       - main
-permissions:
-  contents: write  # Required to push changes
-  pull-requests: read  # Required to create or update pull requests
-  
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -26,30 +23,30 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pylint jq
+          pip install pylint
 
       - name: Run Pylint
-        id: pylint
         run: |
-          pylint_score=$(pylint hw2_rsc/*.py --exit-zero --output-format=json | jq -r '.[0].score')
-          echo "pylint_score=$pylint_score" >> $GITHUB_ENV
+          pylint hw2_rsc/*.py --output-format=json > pylint-report.json
+        continue-on-error: true
 
-      - name: Create Badges Directory
+      - name: Generate Pylint badge
+        id: pylint_badge
         run: |
-          mkdir -p ./badges
+          # Extract score from pylint report
+          pylint_score=$(jq '.reports[0].score' pylint-report.json)
+          
+          # Format score to a percentage
+          score_percentage=$(echo "scale=2; $pylint_score*100" | bc)
+          
+          # Generate badge URL using Shields.io
+          badge_url="https://img.shields.io/badge/pylint-${score_percentage}%25-brightgreen"
+          
+          # Save badge URL to file
+          echo "badge_url=${badge_url}" >> $GITHUB_ENV
 
-      - name: Generate Badge
-        run: |
-          score=$(echo ${{ env.pylint_score }} | awk '{printf("%.1f\n", $1)}')
-          color=$(if (( $(echo "$score >= 8" | bc -l) )); then echo "brightgreen"; elif (( $(echo "$score >= 6" | bc -l) )); then echo "yellow"; else echo "red"; fi)
-          badge_url="https://img.shields.io/badge/Pylint-$score-$color.svg"
-          curl -o ./badges/pylint-score.svg $badge_url
-
-      - name: Commit Badge
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "github-actions@github.com"
-          git add ./badges/pylint-score.svg
-          git commit -m "Update Pylint badge" || echo "No changes to commit"
-          git push
+      - name: Upload Pylint badge as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pylint-badge
+          path: badge_url.txt
