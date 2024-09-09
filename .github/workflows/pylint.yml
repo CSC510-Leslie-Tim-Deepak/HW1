@@ -27,8 +27,9 @@ jobs:
 
       - name: Run Pylint
         run: |
+          dir > output.txt
           pylint ./hw2_src/*.py --output-format=json > pylint-report.json
-          dir
+          
         continue-on-error: true
 
       - name: Generate Pylint badge
