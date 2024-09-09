@@ -1,7 +1,7 @@
 """
 This module provides functionality for generating random arrays using subprocess.
 """
-import random
+import secrets
 
 
 def random_array(arr):
@@ -14,5 +14,5 @@ def random_array(arr):
     """
     shuffled_num = None
     for i, _ in enumerate(arr):
-        arr[i] = random.randint(1, 20)
+        arr[i] = secrets.randbelow(20) + 1
     return arr

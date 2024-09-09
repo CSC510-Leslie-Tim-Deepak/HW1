@@ -1,6 +1,10 @@
-# test_merge_sort.py
-
+import unittest
 from hw2_debugging import merge_sort
 
-def test_sorted_array():
-    assert merge_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
+
+class TestMergeSort(unittest.TestCase):
+    def test_reverse_sorted_array(self):
+        self.assertEqual(merge_sort([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5])
+
+if __name__ == '__main__':
+    unittest.main()
