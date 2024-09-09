@@ -27,8 +27,7 @@ jobs:
 
       - name: Run Pylint
         run: |
-          echo "dir -a " > output.txt
-          pylint ./hw2_src/*.py --output-format=json > pylint-report.json
+          pylint ./hw2_src/*.py --output-format=json > pylint-report.json || { echo 'Pylint failed'; exit 1; }
           
         continue-on-error: true
 
