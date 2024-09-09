@@ -30,6 +30,10 @@ jobs:
           pylint_score=$(pylint hw2_src/*.py --exit-zero --output-format=json | jq -r '.[0].score')
           echo "pylint_score=$pylint_score" >> $GITHUB_ENV
 
+      - name: Create Badges Directory
+        run: |
+          mkdir -p ./badges
+
       - name: Generate Badge
         run: |
           score=$(echo ${{ env.pylint_score }} | awk '{printf("%.1f\n", $1)}')
