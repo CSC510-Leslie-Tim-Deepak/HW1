@@ -22,3 +22,4 @@ jobs:
     - name: Run Pylint
       run: |
         pylint hw2_rsc/*.py > post_traces/pylint_trace.txt
+        pylint hw2_rsc/*.py --output-format=json > post_traces/pylint-report.json
