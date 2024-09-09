@@ -26,3 +26,4 @@
 ![Pylint Badge](https://img.shields.io/badge/pylint-0%25-brightgreen)
 ![Pylint Badge](https://img.shields.io/badge/pylint-0%25-brightgreen)
 ![Pylint Badge](https://img.shields.io/badge/pylint-0%25-brightgreen)
+![Pylint Badge](https://img.shields.io/badge/pylint-0%25-brightgreen)
