@@ -30,7 +30,7 @@ jobs:
     - name: Test with pytest and generate coverage report
       run: |
         pytest --cov=./
-    - name: Upload coverage to Coveralls
-      run: coveralls
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    #- name: Upload coverage to Coveralls
+    #  run: coveralls
+    #  env:
+    #    COVERALLS_REPO_TOKEN: ${{ secrets.CODECOV_TOKEN }}
