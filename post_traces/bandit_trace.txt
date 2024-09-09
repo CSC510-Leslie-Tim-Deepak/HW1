@@ -1,12 +1,16 @@
-Run started:2024-09-09 01:54:06.208137
+Run started:2024-09-09 02:10:37.390670
 
 
 Test results:
 	No issues identified.
 
 Code scanned:
+<<<<<<< HEAD
 	Total lines of code: 72
 
+=======
+	Total lines of code: 98
+>>>>>>> df569b1 (edit test case to meet pylint)
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
