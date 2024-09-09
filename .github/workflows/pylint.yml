@@ -5,7 +5,12 @@ on:
     branches:
       - main
   pull_request:
-
+    branches:
+      - main
+permissions:
+  contents: write  # Required to push changes
+  pull-requests: read  # Required to create or update pull requests
+  
 jobs:
   lint:
     runs-on: ubuntu-latest
