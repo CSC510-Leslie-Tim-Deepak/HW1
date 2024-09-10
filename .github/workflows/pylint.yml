@@ -29,8 +29,30 @@ jobs:
         run: |
           mkdir -p post_traces
           pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace-report.txt
-        shell: bash
+          echo 'Add value2' >> testfile.txt
               
+      - name: move to dir # Move the generated files into output folder
+        run: |
+          mkdir -p post_traces
+          yes| cp -rf pylint_trace-report.txt ./post_traces/
+        #####
+      - name: move to dir # Move the generated files into output folder
+        run: |
+          mkdir -p output
+          yes| cp -rf testfile.txt ./output/
+      - name: Commit files # commit the output folder
+        run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git add ./output
+          git commit -m "Add changes"
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+            branch: B77 #ignore if your branch is master
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            force: true
+
       - name: Run Pylint & Update Dynamic Badge
         uses: Silleellie/pylint-github-action@v2
         with:
