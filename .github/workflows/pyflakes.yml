@@ -23,8 +23,8 @@ jobs:
         # enter the critical section    
       - name: Retry Lock File Creation
         run: |
-          MAX_RETRIES = 10
-          RETRY_INTERVAL = 3
+          MAX_RETRIES=10
+          RETRY_INTERVAL=3
           LOCK_FILE=".github/lockfile"
           for i in $(seq 1 $MAX_RETRIES); do
             if [ -f "$LOCK_FILE" ]; then
