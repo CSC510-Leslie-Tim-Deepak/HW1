@@ -33,6 +33,7 @@ jobs:
       run: |
         git config --local user.email "test@github.com"
         git config --local user.name "GitHub Action test"
+        git pull
         git add ./post_traces/autopep8_trace.txt
         git commit --allow-empty -m "Update autopep8 report"
         git push
