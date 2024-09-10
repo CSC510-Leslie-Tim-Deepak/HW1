@@ -8,7 +8,7 @@ jobs:
     concurrency:
       group: generate-report-group
       cancel-in-progress: false
-
+      
     steps:
     - name: Turnstyle Lock (Prevent Concurrent Pushes)
       uses: softprops/turnstyle@v1
