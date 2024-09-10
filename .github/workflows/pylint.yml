@@ -20,13 +20,37 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: "Setup installation requirements"
         run: |
-          pip install pylint jq
+          pip install --upgrade pip
+          pip install wheel pylint
+          shell: bash
           
+      - name: "Lint package(s)"
+        run: |
+          pylint --exit-zero ./hw2_rsc/*.py | tee pylint_trace-report.txt
+        shell: bash
+              
       - name: Run Pylint & Update Dynamic Badge
         uses: Silleellie/pylint-github-action@v2
         with:
           lint-path: |
             ./hw2_rsc/*.py
           python-version: 3.11
+
+      - name: move to dir # Move the generated files into output folder
+        run: |
+          mkdir -p post_traces
+          yes| cp -rf pylint_trace-report.txt ./post_traces/
+          
+      - name: Commit files # commit the output folder
+        run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git add ./post_traces/pylint_trace-report.txt
+          git commit -m "Update pylint report"
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          branch: B77 #ignore if your branch is master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
