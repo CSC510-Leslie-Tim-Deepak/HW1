@@ -3,6 +3,7 @@ This module provides functionality for mergesort
 """
 import rand
 
+
 def merge_sort(input_arr):
     """
     This function provide the process of merge sort
