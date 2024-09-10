@@ -46,4 +46,3 @@ jobs:
             color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
             namedLogo: snowflake
             logoColor: "#ffffff"
-            logoSize: auto
