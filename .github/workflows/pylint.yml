@@ -4,6 +4,10 @@ on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
+    concurrency:
+      group: generate-report-group
+      cancel-in-progress: false
+      
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
@@ -23,27 +27,6 @@ jobs:
           pip install --upgrade pip
           pip install pylint
 
-        # enter the critical section    
-      - name: Retry Lock File Creation
-        run: |
-          MAX_RETRIES=10
-          RETRY_INTERVAL=3
-          LOCK_FILE=".github/lockfile"
-          for i in $(seq 1 $MAX_RETRIES); do
-            if [ -f "$LOCK_FILE" ]; then
-              echo "Another workflow is running. Retry $i/$MAX_RETRIES."
-              sleep $RETRY_INTERVAL
-            else
-              echo "Creating lock file."
-              touch "$LOCK_FILE"
-              exit 0
-            fi
-          done
-          echo "Failed to create lock file after $MAX_RETRIES retries."
-          exit 1
-        continue-on-error: true
-          
-
       
       - name: "Lint package(s)"
         run: |
@@ -59,12 +42,3 @@ jobs:
           git commit --allow-empty -m "Update pylint report"
           git push
         continue-on-error: true
-          
-      # leave the critical section    
-      - name: Remove Lock File
-        run: |
-          LOCK_FILE=".github/lockfile"
-          if [ -f "$LOCK_FILE" ]; then
-            echo "Removing lock file."
-            rm "$LOCK_FILE"
-          fi
