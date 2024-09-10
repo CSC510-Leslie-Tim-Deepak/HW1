@@ -12,6 +12,8 @@
 ## Homework 2 Badges
 ![Format Check](https://github.com/Captain-Tim/HW1_fork/actions/workflows/autopep8_check.yml/badge.svg)
 ![pylint](https://img.shields.io/badge/PyLint-10.00-brightgreen?logo=python&logoColor=white)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
 
 ## Screenshots
 ![Console](SE_HW1_Console.png)
