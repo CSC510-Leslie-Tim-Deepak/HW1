@@ -54,15 +54,3 @@ jobs:
           lint-path: |
             ./hw2_rsc/*.py
           python-version: 3.11
-          
-      - name: Commit files # commit the output folder
-        run: |
-          git config --local user.email "test@github.com"
-          git config --local user.name "GitHub Action test"
-          git add ./post_traces/pylint_trace-report.txt
-          git commit -m "Update pylint report"
-      - name: Push changes # push the output folder to your repo
-        uses: ad-m/github-push-action@master
-        with:
-          branch: B77 #ignore if your branch is master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
