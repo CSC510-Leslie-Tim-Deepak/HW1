@@ -38,6 +38,7 @@ jobs:
           done
           echo "Failed to create lock file after $MAX_RETRIES retries."
           exit 1
+        continue-on-error: true
         
       - name: Run Pyflakes
         id: pyflakes
