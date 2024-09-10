@@ -23,7 +23,7 @@ jobs:
       - name: "Setup installation requirements"
         run: |
           pip install --upgrade pip
-          pip install wheel pylint
+          pip install pylint
           shell: bash
           
       - name: "Lint package(s)"
