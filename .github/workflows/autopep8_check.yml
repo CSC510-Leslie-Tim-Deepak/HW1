@@ -39,4 +39,4 @@ jobs:
           message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
           color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
           namedLogo: react
-          logoColor: "#61DAFB"
+          logoColor: "#ffffff"
