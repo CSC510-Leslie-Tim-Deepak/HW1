@@ -1,0 +1,55 @@
+name: Pyflakes Lint
+
+on:
+  push:
+    branches: [main]  # Change to your branch if needed
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'  # Specify the Python version you use
+
+      - name: Install Pyflakes
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyflakes
+
+      - name: Run Pyflakes
+        id: pyflakes
+        run: |
+          pyflakes ./hw2_rsc/*.py > pyflakes-report.txt
+          if [ -s pyflakes-report.txt ]; then
+            echo "status=fail" >> $GITHUB_ENV
+          else
+            echo "status=pass" >> $GITHUB_ENV
+          fi
+
+      - name: Generate Pyflakes Badge
+        uses: schneegans/dynamic-badges-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          label: Pyflakes
+          message: ${{ env.status }}
+          color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
+          path: ./badges/pyflakes-badge.svg
+
+      - name: Commit and Push Badge
+        if: ${{ github.ref == 'refs/heads/main' }}  # Only commit on the main branch
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .github/badges/pyflakes-badge.svg
+          git commit -m "Update Pyflakes badge"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
