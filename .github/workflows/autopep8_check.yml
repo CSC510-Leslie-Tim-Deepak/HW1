@@ -35,13 +35,14 @@ jobs:
         git config --local user.name "GitHub Action test"
         git add ./post_traces/autopep8_trace.txt
         git commit --allow-empty -m "Update autopep8 report"
+        git pull --rebase
         
     - name: Push changes # push the output folder to your repo
       uses: ad-m/github-push-action@master
       with:
           branch: B77 #ignore if your branch is master
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          # force: true
           
     - name: Create Awesome Badge
       uses: schneegans/dynamic-badges-action@v1.7.0
