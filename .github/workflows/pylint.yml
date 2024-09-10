@@ -1,4 +1,4 @@
-name: Lint Python Code
+name: Pylint
 
 on:
   push:
