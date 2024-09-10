@@ -3,7 +3,7 @@ name: Autopep8 Check
 on: [push, pull_request]
 
 jobs:
-  format:
+  Autopep8:
     runs-on: ubuntu-latest
 
     steps:
