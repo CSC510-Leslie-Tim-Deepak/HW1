@@ -34,7 +34,7 @@ jobs:
           git config --local user.name "GitHub Action test"
           git pull
           git add ./post_traces/pylint_trace.txt
-          git commit -m "Update pylint report"
+          git commit --allow-empty "Update pylint report"
           git push
 
       - name: Run Pylint & Update Dynamic Badge
