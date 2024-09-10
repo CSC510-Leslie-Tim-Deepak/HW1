@@ -38,3 +38,4 @@ jobs:
           label: Autopep8
           message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
           color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
+          namedLogo: React
