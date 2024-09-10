@@ -26,7 +26,7 @@ jobs:
         run: |
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
-          git checkout B77
+          git checkout -f B77
           git pull --rebase
           mkdir -p post_traces
           pyflakes ./hw2_rsc/*.py | tee ./post_traces/pyflakes_trace.txt
