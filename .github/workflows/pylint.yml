@@ -27,7 +27,8 @@ jobs:
           
       - name: "Lint package(s)"
         run: |
-          pylint --exit-zero ./hw2_rsc/*.py | tee pylint_trace-report.txt
+          mkdir -p post_traces
+          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace-report.txt
         shell: bash
               
       - name: Run Pylint & Update Dynamic Badge
@@ -36,11 +37,6 @@ jobs:
           lint-path: |
             ./hw2_rsc/*.py
           python-version: 3.11
-
-      - name: move to dir # Move the generated files into output folder
-        run: |
-          mkdir -p post_traces
-          yes| cp -rf pylint_trace-report.txt ./post_traces/
           
       - name: Commit files # commit the output folder
         run: |
