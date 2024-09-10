@@ -35,7 +35,7 @@ jobs:
           fi
           git add ./post_traces/pyflakes_trace.txt
           git commit --allow-empty -m "Update pyflakes report"
-          git push origin B77 --force-with-lease  # Safely push to the remote branch
+          git push origin B77  # Safely push to the remote branch
         continue-on-error: true
 
       - name: Create Awesome Badge
