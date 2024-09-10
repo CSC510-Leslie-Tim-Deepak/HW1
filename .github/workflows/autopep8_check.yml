@@ -22,4 +22,19 @@ jobs:
 
     - name: Run autopep8
       run: |
-        autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee autopep8_trace.txt
+        autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee autopep8_trace-report.txt
+        if [ -s autopep8_trace-report.txt ]; then
+            echo "status=fail" >> $GITHUB_ENV
+          else
+            echo "status=pass" >> $GITHUB_ENV
+          fi
+          
+    - name: Create Awesome Badge
+      uses: schneegans/dynamic-badges-action@v1.7.0
+      with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 60dbd9748dbf9d0e1fa28a94afa2b482
+          filename: autopep8.json # Use test.svg if you want to use the SVG mode.
+          label: Autopep8
+          message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
+          color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
