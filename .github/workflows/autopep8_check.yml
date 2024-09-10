@@ -33,7 +33,7 @@ jobs:
       uses: schneegans/dynamic-badges-action@v1.7.0
       with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: dd4ba9dd4be23a0e47644e1126cb573ec
+          gistID: d4ba9dd4be23a0e47644e1126cb573ec
           filename: autopep8.json # Use test.svg if you want to use the SVG mode.
           label: Autopep8
           message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
