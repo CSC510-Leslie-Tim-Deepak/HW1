@@ -20,9 +20,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyflakes
 
-      - name: Run Pyflakes
-        id: pyflakes
+      - name: Commit files # commit the output folder
         run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git checkout B77
+          git pull --rebase
           mkdir -p post_traces
           pyflakes ./hw2_rsc/*.py | tee ./post_traces/pyflakes_trace.txt
           if [ -s ./post_traces/pyflakes_trace.txt ]; then
@@ -30,17 +33,10 @@ jobs:
           else
             echo "status=pass" >> $GITHUB_ENV
           fi
-        continue-on-error: true
-      - name: Commit files # commit the output folder
-        run: |
-          git config --local user.email "test@github.com"
-          git config --local user.name "GitHub Action test"
-          git checkout B77
-          git pull --rebase
           git add ./post_traces/pyflakes_trace.txt
           git commit --allow-empty -m "Update pyflakes report"
           git push origin B77 --force-with-lease  # Safely push to the remote branch
-          
+        continue-on-error: true
 
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.7.0
