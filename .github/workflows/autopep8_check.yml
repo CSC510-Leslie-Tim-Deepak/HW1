@@ -22,12 +22,26 @@ jobs:
 
     - name: Run autopep8
       run: |
-        autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee autopep8_trace-report.txt
-        if [ -s autopep8_trace-report.txt ]; then
+        autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee ./post_traces/autopep8_trace.txt
+        if [ -s ./post_traces/autopep8_trace.txt ]; then
             echo "status=fail" >> $GITHUB_ENV
         else
           echo "status=pass" >> $GITHUB_ENV
         fi
+        
+    - name: Commit files # commit the output folder
+      run: |
+        git config --local user.email "test@github.com"
+        git config --local user.name "GitHub Action test"
+        git add ./post_traces/autopep8_trace.txt
+        git commit --allow-empty -m "Update autopep8 report"
+        
+    - name: Push changes # push the output folder to your repo
+      uses: ad-m/github-push-action@master
+      with:
+          branch: B77 #ignore if your branch is master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
           
     - name: Create Awesome Badge
       uses: schneegans/dynamic-badges-action@v1.7.0
