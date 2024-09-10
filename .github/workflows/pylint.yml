@@ -1,0 +1,32 @@
+name: Pylint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install pylint jq
+          
+      - name: Run Pylint & Update Dynamic Badge
+        uses: Silleellie/pylint-github-action@v2
+        with:
+          lint-path: |
+            ./hw2_rsc/*.py
+          python-version: 3.11

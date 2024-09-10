@@ -1,0 +1,42 @@
+name: Autopep8 Check
+
+on: [push, pull_request]
+
+jobs:
+  Autopep8:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # Specify the Python version
+
+    - name: Install autopep8
+      run: |
+        python -m pip install --upgrade pip
+        pip install autopep8
+
+    - name: Run autopep8
+      run: |
+        autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee autopep8_trace-report.txt
+        if [ -s autopep8_trace-report.txt ]; then
+            echo "status=fail" >> $GITHUB_ENV
+        else
+          echo "status=pass" >> $GITHUB_ENV
+        fi
+          
+    - name: Create Awesome Badge
+      uses: schneegans/dynamic-badges-action@v1.7.0
+      with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 60dbd9748dbf9d0e1fa28a94afa2b482
+          filename: autopep8.json # Use test.svg if you want to use the SVG mode.
+          label: Autopep8
+          message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
+          color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
+          namedLogo: react
+          logoColor: "#ffffff"

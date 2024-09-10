@@ -1,7 +1,7 @@
 """
 This module provides functionality for generating random arrays using subprocess.
 """
-import subprocess
+import secrets
 
 
 def random_array(arr):
@@ -12,9 +12,6 @@ def random_array(arr):
     Returns:
         list: The input list with random integers.
     """
-    shuffled_num = None
     for i, _ in enumerate(arr):
-        shuffled_num = subprocess.run(
-            ["/usr/bin/shuf", "-i1-20", "-n1"], capture_output=True, check=True)
-        arr[i] = int(shuffled_num.stdout)
+        arr[i] = secrets.randbelow(20) + 1
     return arr
