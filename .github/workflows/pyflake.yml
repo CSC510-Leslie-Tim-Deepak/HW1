@@ -35,13 +35,14 @@ jobs:
           fi
 
       - name: Generate Pyflakes Badge
-        uses: schneegans/dynamic-badges-action@v1.7.0
+        uses: schneegans/dynamic-badges-action@v1.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: Pyflakes
           message: ${{ env.status }}
           color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
-          path: ./badges/pyflakes-badge.svg
+          path: .github/badges/pyflakes-badge.svg
+
 
       - name: Commit and Push Badge
         if: ${{ github.ref == 'refs/heads/main' }}  # Only commit on the main branch
