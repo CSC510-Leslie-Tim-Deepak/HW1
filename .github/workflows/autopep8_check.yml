@@ -33,11 +33,9 @@ jobs:
       run: |
         git config --local user.email "test@github.com"
         git config --local user.name "GitHub Action test"
-        git fetch --all
-        git checkout B77  
         git add ./post_traces/autopep8_trace.txt
         git commit --allow-empty -m "Update autopep8 report"
-        git push origin B77
+        git push
            
     - name: Create Awesome Badge
       uses: schneegans/dynamic-badges-action@v1.7.0
