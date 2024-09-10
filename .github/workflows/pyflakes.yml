@@ -44,3 +44,6 @@ jobs:
             label: Pyflakes
             message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
             color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
+            namedLogo: snowflake
+            logoColor: "#ffffff"
+            logoSize: auto
