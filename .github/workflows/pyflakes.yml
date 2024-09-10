@@ -23,6 +23,7 @@ jobs:
       - name: Run Pyflakes
         id: pyflakes
         run: |
+          mkdir -p post_traces
           pyflakes ./hw2_rsc/*.py | tee ./post_traces/pyflakes_trace.txt
           if [ -s ./post_traces/pyflakes_trace.txt ]; then
             echo "status=fail" >> $GITHUB_ENV
