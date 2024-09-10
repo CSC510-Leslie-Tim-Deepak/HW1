@@ -40,3 +40,4 @@ jobs:
           color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
           namedLogo: react
           logoColor: "#ffffff"
+          logoSize: auto
