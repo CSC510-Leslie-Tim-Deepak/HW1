@@ -10,12 +10,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Turnstyle Lock (Prevent Concurrent Pushes)
-        uses: softprops/turnstyle@v1
-        with:
-          poll-interval-seconds: 10
-        # Ensure only one job accesses the repository at a time.
-          
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -41,6 +35,26 @@ jobs:
         run: |
           mkdir -p post_traces
           pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt        
+      
+      # enter the critical section    
+      - name: Retry Lock File Creation
+        run: |
+          MAX_RETRIES = 10
+          RETRY_INTERVAL = 3
+          LOCK_FILE=".github/lockfile"
+          for i in $(seq 1 $MAX_RETRIES); do
+            if [ -f "$LOCK_FILE" ]; then
+              echo "Another workflow is running. Retry $i/$MAX_RETRIES."
+              sleep $RETRY_INTERVAL
+            else
+              echo "Creating lock file."
+              touch "$LOCK_FILE"
+              exit 0
+            fi
+          done
+          echo "Failed to create lock file after $MAX_RETRIES retries."
+          exit 1
+        
       - name: Commit files # commit the output folder
         run: |
           git config --local user.email "test@github.com"
@@ -49,3 +63,13 @@ jobs:
           git add ./post_traces/pylint_trace.txt
           git commit --allow-empty -m "Update pylint report"
           git push
+        continue-on-error: true
+          
+      # leave the critical section    
+      - name: Remove Lock File
+        run: |
+          LOCK_FILE=".github/lockfile"
+          if [ -f "$LOCK_FILE" ]; then
+            echo "Removing lock file."
+            rm "$LOCK_FILE"
+          fi
