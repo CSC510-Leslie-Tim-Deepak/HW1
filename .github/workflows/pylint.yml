@@ -22,21 +22,8 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install pylint
-          
-      - name: Run Pylint & Update Dynamic Badge
-        uses: Silleellie/pylint-github-action@v2
-        with:
-          lint-path: |
-            ./hw2_rsc/*.py
-          python-version: 3.11
-        continue-on-error: true
-      
-      - name: "Lint package(s)"
-        run: |
-          mkdir -p post_traces
-          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt        
-      
-      # enter the critical section    
+
+          # enter the critical section    
       - name: Retry Lock File Creation
         run: |
           MAX_RETRIES=10
@@ -54,6 +41,19 @@ jobs:
           done
           echo "Failed to create lock file after $MAX_RETRIES retries."
           exit 1
+          
+      - name: Run Pylint & Update Dynamic Badge
+        uses: Silleellie/pylint-github-action@v2
+        with:
+          lint-path: |
+            ./hw2_rsc/*.py
+          python-version: 3.11
+        continue-on-error: true
+      
+      - name: "Lint package(s)"
+        run: |
+          mkdir -p post_traces
+          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
         
       - name: Commit files # commit the output folder
         run: |
