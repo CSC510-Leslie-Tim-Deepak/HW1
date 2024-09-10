@@ -11,7 +11,7 @@
 
 ## Homework 2 Badges
 ![Format Check](https://github.com/Captain-Tim/HW1_fork/actions/workflows/autopep8_check.yml/badge.svg)
-![pylint](https://img.shields.io/badge/PyLint-8.49-yellow?logo=python&logoColor=white)
+![pylint](https://img.shields.io/badge/PyLint-9.81-yellow?logo=python&logoColor=white)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/e08fb0f4d4d2ebffe6c63b3be6f0b21d/raw/test.json)
 
 ## Screenshots
