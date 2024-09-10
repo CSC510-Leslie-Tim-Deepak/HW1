@@ -26,13 +26,13 @@ jobs:
       - name: "Lint package(s)"
         run: |
           mkdir -p post_traces
-          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace-report.txt
+          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
 
       - name: Commit files # commit the output folder
         run: |
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
-          git add ./post_traces/pylint_trace-report.txt
+          git add ./post_traces/pylint_trace.txt
           git commit -m "Update pylint report"
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
