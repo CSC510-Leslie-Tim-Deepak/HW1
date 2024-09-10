@@ -25,9 +25,9 @@ jobs:
         autopep8 --diff --ignore=E501 hw2_rsc/*.py | tee autopep8_trace-report.txt
         if [ -s autopep8_trace-report.txt ]; then
             echo "status=fail" >> $GITHUB_ENV
-          else
-            echo "status=pass" >> $GITHUB_ENV
-          fi
+        else
+          echo "status=pass" >> $GITHUB_ENV
+        fi
           
     - name: Create Awesome Badge
       uses: schneegans/dynamic-badges-action@v1.7.0
