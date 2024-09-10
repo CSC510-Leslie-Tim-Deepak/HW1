@@ -26,7 +26,6 @@ jobs:
           git config --local user.name "GitHub Action test"
           git fetch --all
           git checkout B77
-          git pull --rebase
           mkdir -p post_traces
           pyflakes ./hw2_rsc/*.py | tee ./post_traces/pyflakes_trace.txt
           if [ -s ./post_traces/pyflakes_trace.txt ]; then
@@ -36,7 +35,7 @@ jobs:
           fi
           git add ./post_traces/pyflakes_trace.txt
           git commit --allow-empty -m "Update pyflakes report"
-          git push origin B77  # Safely push to the remote branch
+          git push origin B77
         continue-on-error: true
 
       - name: Create Awesome Badge
