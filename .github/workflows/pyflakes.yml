@@ -6,13 +6,7 @@ jobs:
   pyflakes:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Turnstyle Lock (Prevent Concurrent Pushes)
-        uses: softprops/turnstyle@v1
-        with:
-          poll-interval-seconds: 10
-        # Ensure only one job accesses the repository at a time.
-        
+    steps:        
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -25,6 +19,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyflakes
+
+        # enter the critical section    
+      - name: Retry Lock File Creation
+        run: |
+          MAX_RETRIES = 10
+          RETRY_INTERVAL = 3
+          LOCK_FILE=".github/lockfile"
+          for i in $(seq 1 $MAX_RETRIES); do
+            if [ -f "$LOCK_FILE" ]; then
+              echo "Another workflow is running. Retry $i/$MAX_RETRIES."
+              sleep $RETRY_INTERVAL
+            else
+              echo "Creating lock file."
+              touch "$LOCK_FILE"
+              exit 0
+            fi
+          done
+          echo "Failed to create lock file after $MAX_RETRIES retries."
+          exit 1
+        
       - name: Run Pyflakes
         id: pyflakes
         run: |
@@ -46,6 +60,15 @@ jobs:
           git commit --allow-empty -m "Update pyflakes report"
           git push
           
+      # leave the critical section    
+      - name: Remove Lock File
+        run: |
+          LOCK_FILE=".github/lockfile"
+          if [ -f "$LOCK_FILE" ]; then
+            echo "Removing lock file."
+            rm "$LOCK_FILE"
+          fi
+        
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
