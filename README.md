@@ -1,6 +1,5 @@
 # HW1
 
-
 ## Homework 1 for Software Engineering - CSC 510 Fall 24
 
 ![Python](https://icongr.am/devicon/python-original.svg?size=50&color=currentColor)
