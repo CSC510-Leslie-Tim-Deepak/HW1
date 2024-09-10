@@ -42,7 +42,7 @@ jobs:
         with:
             branch: B77 #ignore if your branch is master
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            force: true
+            #force: true
 
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.7.0
