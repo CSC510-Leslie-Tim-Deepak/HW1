@@ -21,8 +21,6 @@ jobs:
           pip install pyflakes
 
       - name: Commit files # commit the output folder
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
