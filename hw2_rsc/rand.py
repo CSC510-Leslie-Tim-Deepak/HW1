@@ -1,6 +1,4 @@
-"""
-This module provides functionality for generating random arrays using subprocess.
-"""
+a
 import secrets
 
 
