@@ -40,7 +40,7 @@ jobs:
         with:
             auth: ${{ secrets.GIST_SECRET }}
             gistID: f4ff7b311132c5719ea23ca6dd96d660
-            filename: autopep8.json # Use test.svg if you want to use the SVG mode.
+            filename: pyflake.json # Use test.svg if you want to use the SVG mode.
             label: Pyflakes
             message: ${{ env.status == 'pass' && 'Pass' || 'Fail' }}
             color: ${{ env.status == 'pass' && 'brightgreen' || 'red' }}
