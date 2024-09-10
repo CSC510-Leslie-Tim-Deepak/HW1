@@ -1,4 +1,4 @@
-name: Pyflakes Lint
+name: Pyflakes
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
           fi
 
       - name: Generate Pyflakes Badge
-        uses: schneegans/dynamic-badges-action@v1
+        uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: Pyflakes
