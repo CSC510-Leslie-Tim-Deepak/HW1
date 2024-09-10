@@ -1,7 +1,4 @@
-************* Module rand
-hw2_rsc/rand.py:18:0: W0104: Statement seems to have no effect (pointless-statement)
-hw2_rsc/rand.py:18:0: E0602: Undefined variable 'aaa' (undefined-variable)
 
------------------------------------
-Your code has been rated at 8.87/10
+------------------------------------
+Your code has been rated at 10.00/10
 
