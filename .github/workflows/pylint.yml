@@ -10,6 +10,12 @@ jobs:
       contents: write
 
     steps:
+      - name: Turnstyle Lock (Prevent Concurrent Pushes)
+        uses: softprops/turnstyle@v1
+        with:
+          poll-interval-seconds: 10
+        # Ensure only one job accesses the repository at a time.
+          
       - name: Checkout code
         uses: actions/checkout@v3
 
