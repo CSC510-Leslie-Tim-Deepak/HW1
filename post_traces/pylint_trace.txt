@@ -1,16 +1,6 @@
-************* Module test_reversedarray
-hw2_rsc/test_reversedarray.py:4:0: C0304: Final newline missing (missing-final-newline)
-hw2_rsc/test_reversedarray.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-hw2_rsc/test_reversedarray.py:3:0: C0116: Missing function or method docstring (missing-function-docstring)
-************* Module test_sortedarray
-hw2_rsc/test_sortedarray.py:6:0: C0304: Final newline missing (missing-final-newline)
-hw2_rsc/test_sortedarray.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-hw2_rsc/test_sortedarray.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
-************* Module test_unsortedarray
-hw2_rsc/test_unsortedarray.py:6:0: C0304: Final newline missing (missing-final-newline)
-hw2_rsc/test_unsortedarray.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-hw2_rsc/test_unsortedarray.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module rand
+hw2_rsc/rand.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 
------------------------------------
-Your code has been rated at 7.86/10
+-------------------------------------------------------------------
+Your code has been rated at 9.81/10 (previous run: 10.00/10, -0.19)
 
