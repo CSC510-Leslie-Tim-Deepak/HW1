@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir -p post_traces
           pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
-          $SCORE=grep 'Your code has been rated at' post_traces/pylint_trace.txt | grep -o '[0-9]*\.[0-9]*'
+          $SCORE=sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' post_traces/pylint_trace.txt
           # echo "score=$SCORE" >> $GITHUB_ENV
           
         
