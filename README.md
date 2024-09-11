@@ -9,7 +9,7 @@
 
 ## Homework 2 Badges
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/60dbd9748dbf9d0e1fa28a94afa2b482/raw/autopep8.json)
-![pylint]()
+![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/cbc5a0932cfa7cc46e32324d7e3a846f/raw/pylint.json)
 ![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/e08fb0f4d4d2ebffe6c63b3be6f0b21d/raw/test.json)
 
 ## Screenshots
