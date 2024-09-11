@@ -32,7 +32,8 @@ jobs:
         
       - name: Commit files # commit the output folder
         uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
-      - run: |
+      - name: Critical Section
+        run: |
           echo "I am protected!"
           sleep 5        
           git config --local user.email "test@github.com"
