@@ -32,9 +32,10 @@ jobs:
           fi
         continue-on-error: true
         
-      - name: Commit files # commit the output folder
+      - name: Set up Mutex
         uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
-      - name: Critical Section
+        
+      - name: Critical Section (commit the report)
         run: |
           sleep 3
           git config --local user.email "test@github.com"
