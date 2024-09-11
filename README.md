@@ -8,9 +8,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/CSC510-Leslie-Tim-Deepak/HW1/badge.svg?branch=main)](https://coveralls.io/github/CSC510-Leslie-Tim-Deepak/HW1?branch=main)
 
 ## Homework 2 Badges
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/60dbd9748dbf9d0e1fa28a94afa2b482/raw/autopep8.json)
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/cbc5a0932cfa7cc46e32324d7e3a846f/raw/pylint.json)
-![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/e08fb0f4d4d2ebffe6c63b3be6f0b21d/raw/test.json)
+[![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/60dbd9748dbf9d0e1fa28a94afa2b482/raw/autopep8.json)](https://github.com/CSC510-Leslie-Tim-Deepak/HW1/actions/workflows/autopep8_check.yml)
+[![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/cbc5a0932cfa7cc46e32324d7e3a846f/raw/pylint.json)](https://github.com/CSC510-Leslie-Tim-Deepak/HW1/actions/workflows/pylint.yml)
+[![badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Captain-Tim/e08fb0f4d4d2ebffe6c63b3be6f0b21d/raw/test.json)](https://github.com/CSC510-Leslie-Tim-Deepak/HW1/actions/workflows/pyflakes.yml)
 
 
 ## Screenshots
