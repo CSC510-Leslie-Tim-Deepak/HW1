@@ -27,11 +27,9 @@ jobs:
       - name: "Lint package(s)"
         run: |
           mkdir -p post_traces
-          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt >> pylint_output.json
-
-          SCORE=$(jq '.[0].score' pylint_output.json)
-          echo "score=$SCORE" >> $GITHUB_ENV
-          rm -f pylint_output.json
+          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
+          grep 'Your code has been rated at' post_traces/pylint_trace.txt | grep -o '[0-9]*\.[0-9]*' >> $GITHUB_ENV
+          
         
       - name: Set up Mutex
         uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
