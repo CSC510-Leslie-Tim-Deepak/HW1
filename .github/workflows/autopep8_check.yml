@@ -30,8 +30,8 @@ jobs:
         fi
       continue-on-error: true
       
-    - name: Set up Mutex
-      uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+    #- name: Set up Mutex
+    #  uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
       
     - name: Critical Section (commit the report)
       run: |
