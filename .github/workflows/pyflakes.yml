@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   pyflakes:
     runs-on: ubuntu-latest
-    concurrency:
-      group: generate-report-group
-      cancel-in-progress: false
       
     steps:        
       - name: Checkout code
