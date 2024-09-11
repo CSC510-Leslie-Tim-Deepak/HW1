@@ -28,8 +28,9 @@ jobs:
         run: |
           mkdir -p post_traces
           pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt >> pylint_output.json
-          
-          echo "score=$(jq '.[0].score' pylint_output.json)" >> $GITHUB_ENV
+
+          SCORE=$(jq '.[0].score' pylint_output.json)
+          echo "score=$SCORE" >> $GITHUB_ENV
           rm -f pylint_output.json
         
       - name: Set up Mutex
@@ -54,8 +55,8 @@ jobs:
             gistID: cbc5a0932cfa7cc46e32324d7e3a846f
             filename: pylint.json # Use test.svg if you want to use the SVG mode.
             label: Pylint
-            message: PyLint
-            valColorRange: 10
+            message: ${{ env.score }}
+            valColorRange: ${{ env.score }}
             maxColorRange: 10
             minColorRange: 0
             namedLogo: python
