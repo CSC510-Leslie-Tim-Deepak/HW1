@@ -55,7 +55,7 @@ jobs:
             filename: pylint.json # Use test.svg if you want to use the SVG mode.
             label: Pylint
             message: PyLint
-            valColorRange: ${{ env.score }}
+            valColorRange: 10
             maxColorRange: 10
             minColorRange: 0
             namedLogo: python
