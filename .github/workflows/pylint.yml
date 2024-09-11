@@ -32,6 +32,7 @@ jobs:
         
       - name: Commit files # commit the output folder
         uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+        
       - name: Critical Section
         run: |
           sleep 3
@@ -42,4 +43,12 @@ jobs:
           git commit --allow-empty -m "Update pylint report"
           git pull --rebase
           git push
+        continue-on-error: true
+
+      - name: Run Pylint & Update Dynamic Badge
+        uses: Silleellie/pylint-github-action@v2
+        with:
+          lint-path: |
+            ./hw2_rsc/*.py
+          python-version: 3.11
         continue-on-error: true
