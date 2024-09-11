@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyflakes
-        
+              
       - name: Run Pyflakes
         id: pyflakes
         run: |
@@ -36,7 +36,10 @@ jobs:
         continue-on-error: true
         
       - name: Commit files # commit the output folder
-        run: |
+        uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+      - run: |
+          echo "I am protected!"
+          sleep 5
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
           git pull --rebase
