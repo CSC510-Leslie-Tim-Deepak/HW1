@@ -1,3 +1,0 @@
-./hw2_rsc/rand.py:3:1: undefined name 'sss'
-./hw2_rsc/rand.py:10:1: undefined name 'asdasd'
-./hw2_rsc/rand.py:11:1: undefined name 'ad5ar23'
