@@ -1,14 +1,4 @@
-************* Module rand
-hw2_rsc/rand.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-hw2_rsc/rand.py:3:0: W0104: Statement seems to have no effect (pointless-statement)
-hw2_rsc/rand.py:3:0: E0602: Undefined variable 'sss' (undefined-variable)
-hw2_rsc/rand.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
-hw2_rsc/rand.py:10:0: W0104: Statement seems to have no effect (pointless-statement)
-hw2_rsc/rand.py:10:0: E0602: Undefined variable 'asdasd' (undefined-variable)
-hw2_rsc/rand.py:11:0: W0104: Statement seems to have no effect (pointless-statement)
-hw2_rsc/rand.py:11:0: E0602: Undefined variable 'ad5ar23' (undefined-variable)
-hw2_rsc/rand.py:12:0: W0104: Statement seems to have no effect (pointless-statement)
 
------------------------------------
-Your code has been rated at 6.25/10
+------------------------------------
+Your code has been rated at 10.00/10
 
