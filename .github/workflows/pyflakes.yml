@@ -41,9 +41,9 @@ jobs:
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
           git status
-          git pull --rebase
           git add ./post_traces/pyflakes_trace.txt
           git commit --allow-empty -m "Update pyflakes report"
+          git pull --rebase
           git push
         
       - name: Create Awesome Badge
