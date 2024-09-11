@@ -39,8 +39,8 @@ jobs:
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
           git status
-          git pull --rebase
           git add ./post_traces/pylint_trace.txt
           git commit --allow-empty -m "Update pylint report"
+          git pull --rebase
           git push
         continue-on-error: true
