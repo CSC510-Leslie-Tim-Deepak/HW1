@@ -5,17 +5,8 @@ on: [push, pull_request]
 jobs:
   Autopep8:
     runs-on: ubuntu-latest
-    concurrency:
-      group: generate-report-group
-      cancel-in-progress: false
       
     steps:
-    - name: Turnstyle Lock (Prevent Concurrent Pushes)
-      uses: softprops/turnstyle@v1
-      with:
-        poll-interval-seconds: 10
-        # Ensure only one job accesses the repository at a time.
-          
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -40,7 +31,10 @@ jobs:
       continue-on-error: true
       
     - name: Commit files # commit the output folder
-      run: |
+      uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+    - run: |
+        echo "I am protected!"
+        sleep 5
         git config --local user.email "test@github.com"
         git config --local user.name "GitHub Action test"
         git pull --rebase
