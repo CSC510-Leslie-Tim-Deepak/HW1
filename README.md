@@ -1,7 +1,6 @@
-# HW1
+## Homeworks for Software Engineering - CSC 510 Fall 24
 
-## Homework 1 for Software Engineering - CSC 510 Fall 24
-
+## Homework 1 Badges
 ![Python](https://icongr.am/devicon/python-original.svg?size=50&color=currentColor)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![License](https://img.shields.io/github/license/CSC510-Leslie-Tim-Deepak/HW1.svg)
