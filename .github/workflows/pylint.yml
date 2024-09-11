@@ -34,8 +34,7 @@ jobs:
         uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
       - name: Critical Section
         run: |
-          echo "I am protected!"
-          sleep 5        
+          sleep 3
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action test"
           git status
