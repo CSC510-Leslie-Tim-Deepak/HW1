@@ -29,7 +29,7 @@ jobs:
           mkdir -p post_traces
           pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
           SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' post_traces/pylint_trace.txt)
-          echo "PYLINT_SCORE=$SCORE" >> $GITHUB_ENV
+          echo "score=$SCORE" >> $GITHUB_ENV
           
         
       - name: Set up Mutex
