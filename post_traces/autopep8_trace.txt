@@ -1,0 +1,10 @@
+--- original/hw2_rsc/rand.py
++++ fixed/hw2_rsc/rand.py
+@@ -2,6 +2,7 @@
+ This module provides functionality for generating random arrays using subprocess.
+ """
+ import subprocess
++
+ 
+ def random_array(arr):
+     '''

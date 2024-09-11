@@ -1,16 +1,12 @@
 name: Pyflakes
 
-on:
-  push:
-    branches: [main]  # Change to your branch if needed
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
   pyflakes:
     runs-on: ubuntu-latest
-
-    steps:
+      
+    steps:        
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -23,18 +19,33 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyflakes
-
+              
       - name: Run Pyflakes
         id: pyflakes
         run: |
-          pyflakes ./hw2_rsc/*.py > pyflakes-report.txt
-          if [ -s pyflakes-report.txt ]; then
+          mkdir -p post_traces
+          pyflakes ./hw2_rsc/*.py | tee ./post_traces/pyflakes_trace.txt
+          if [ -s ./post_traces/pyflakes_trace.txt ]; then
             echo "status=fail" >> $GITHUB_ENV
           else
             echo "status=pass" >> $GITHUB_ENV
           fi
         continue-on-error: true
-
+        
+      - name: Set up Mutex
+        uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+        
+      - name: Critical Section (commit the report)
+        run: |
+          sleep 3
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git status
+          git add ./post_traces/pyflakes_trace.txt
+          git commit --allow-empty -m "Update pyflakes report"
+          git pull --rebase
+          git push
+        
       - name: Create Awesome Badge
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:

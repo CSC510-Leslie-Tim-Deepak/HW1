@@ -1,15 +1,14 @@
 name: Pylint
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 jobs:
   lint:
     runs-on: ubuntu-latest
+      
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
 
     steps:
       - name: Checkout code
@@ -20,13 +19,44 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: "Setup installation requirements"
         run: |
-          pip install pylint jq
+          python -m pip install --upgrade pip
+          pip install pylint
+      
+      - name: "Lint package(s)"
+        run: |
+          mkdir -p post_traces
+          pylint --exit-zero ./hw2_rsc/*.py | tee ./post_traces/pylint_trace.txt
+          SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' post_traces/pylint_trace.txt)
+          echo "score=$SCORE" >> $GITHUB_ENV
           
-      - name: Run Pylint & Update Dynamic Badge
-        uses: Silleellie/pylint-github-action@v2
+        
+      - name: Set up Mutex
+        uses: ben-z/gh-action-mutex@v1.0.0-alpha.9
+        
+      - name: Critical Section (commit the report)
+        run: |
+          sleep 3
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git status
+          git add ./post_traces/pylint_trace.txt
+          git commit --allow-empty -m "Update pylint report"
+          git pull --rebase
+          git push
+        continue-on-error: true
+        
+      - name: Create Awesome Badge
+        uses: schneegans/dynamic-badges-action@v1.7.0
         with:
-          lint-path: |
-            ./hw2_rsc/*.py
-          python-version: 3.11
+            auth: ${{ secrets.GIST_SECRET }}
+            gistID: cbc5a0932cfa7cc46e32324d7e3a846f
+            filename: pylint.json # Use test.svg if you want to use the SVG mode.
+            label: Pylint
+            message: ${{ env.score }}
+            valColorRange: ${{ env.score }}
+            maxColorRange: 10
+            minColorRange: 0
+            namedLogo: python
+            logoColor: "#ffffff"
