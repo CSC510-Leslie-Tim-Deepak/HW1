@@ -1,4 +1,7 @@
+************* Module rand
+hw2_rsc/rand.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+hw2_rsc/rand.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 9.62/10
 
